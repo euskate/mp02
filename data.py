@@ -29,9 +29,9 @@ for file in files:
 df_result.rename(columns={0:'평균', 1:'평년'}, inplace=True)
 
 # 날짜 컬럼 만들기
-df_result['date'] = pd.to_datetime(df[['year','month','day']])
+df_result['date'] = pd.to_datetime(df_result[['year','month','day']])
 
-# 컬럼 순서 조정
+# # 컬럼 순서 조정
 df_result = pd.DataFrame(df_result, columns=['date', '평균', '평년'])
 
 # 데이터 타입 변경
