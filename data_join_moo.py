@@ -2,12 +2,7 @@
 import pandas as pd
 import numpy as np
 
-# 농산물 리스트
-agriList = ['moo', 'baechoo', 'apple', 'scallion']
-
 # 데이터 불러오기
-df_moo = pd.read_csv('./data/result_df.csv')
-df_moo = pd.read_csv('./data/result_df.csv')
 df_moo = pd.read_csv('./data/result_df.csv')
 df_wheather = pd.read_csv('./data/date_final.csv')
 
@@ -20,12 +15,10 @@ print(df_wheather.columns)
 
 # 컬럼명 변경
 df_moo.rename(columns={'date':'날짜'}, inplace=True)
-df_moo.columns
 
 # 데이터 타입 변경
 df_moo['날짜'] = pd.to_datetime(df_moo.날짜)
 df_wheather['날짜'] = pd.to_datetime(df_wheather.날짜)
-df_wheather['현재기온'].astype(np.int32)
 df_wheather['현재기온'] = pd.to_numeric(df_wheather['현재기온'], errors='coerce')
 df_wheather['이슬점온도'] = pd.to_numeric(df_wheather['이슬점온도'], errors='coerce')
 df_wheather['체감온도'] = pd.to_numeric(df_wheather['체감온도'], errors='coerce')
