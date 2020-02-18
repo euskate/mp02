@@ -35,13 +35,38 @@
 
 
 
+# import os
+# import win32com.client
+# xl = win32com.client.Dispatch("Excel.Application")
+# path =  os.getcwd().replace('\'','\\') + '\\'
+# print(path)
+# wb = xl.Workbooks.Open(path+"2015_01_03.xls")
+# wb.SaveAs(path+"2015_01_03.xlsx", FileFormat = 51)
+# wb.Close()
+# xl.Quit()
+
+
 import os
 import win32com.client
+import time
+# xl = win32com.client.Dispatch("Excel.Application")
+# path =  os.getcwd().replace('\'','\\') + '\\'
+# print(path)
+# wb = xl.Workbooks.Open(path+"2015_01_03.xls")
+# wb.SaveAs(path+"2015_01_03.xlsx", FileFormat = 51)
+# wb.Close()
+# xl.Quit()
+
+path = 'C:/Users/admin/Downloads/'
+startday = '2015-01-01'
+name = 'pear'
+
 xl = win32com.client.Dispatch("Excel.Application")
-path =  os.getcwd().replace('\'','\\') + '\\'
-print(path)
-wb = xl.Workbooks.Open(path+"2015_01_03.xls")
-wb.SaveAs(path+"2015_01_03.xlsx", FileFormat = 51)
+path = path.replace('/','\\')
+print(f'{path}{startday}_{name}.xls')
+
+wb = xl.Workbooks.Open(f'{path}{startday}_{name}.xls')
+wb.SaveAs(f'{path}{startday}_{name}.xlsx', FileFormat = 51)
 wb.Close()
 xl.Quit()
-
+time.sleep(1)
