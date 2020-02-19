@@ -3,49 +3,67 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
 
-  <title>{% block title %}2nd Mini Project{% endblock title %}</title>
+    <title>{% block title %}2nd Mini Project{% endblock title %}</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/css/simple-sidebar.css" rel="stylesheet">
 
-  {% block head %}
-  {% endblock head %}
+    <link href="https://fonts.googleapis.com/css?family=Jua|Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Jua', sans-serif;
+        }
+    </style>
+
+    {% block head %} {% endblock head %}
 </head>
 
 <body>
 
-  <div class="d-flex" id="wrapper">
+    <div class="d-flex" id="wrapper">
 
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">2nd Miniproject </div>
-      <div class="list-group list-group-flush">
-        <a href="{% url 'home' %}" class="list-group-item list-group-item-action bg-light">Home</a>
-        <a href="{% url 'step1' %}" class="list-group-item list-group-item-action bg-light">step1 연구 목표 설정</a>
-        <a href="{% url 'step2' %}" class="list-group-item list-group-item-action bg-light">step2 데이터 획득</a>
-        <a href="{% url 'step3' %}" class="list-group-item list-group-item-action bg-light">step3 데이터 준비</a>
-        <a href="{% url 'step4' %}" class="list-group-item list-group-item-action bg-light">step4 데이터 탐색</a>
-        <a href="{% url 'step5' %}" class="list-group-item list-group-item-action bg-light">step5 데이터 모델링</a>
-        <a href="{% url 'step6' %}" class="list-group-item list-group-item-action bg-light">step6 발표</a>
-      </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">
+                <h4 class="mb-0">2nd Miniproject</h4>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="{% url 'home' %}" class="list-group-item list-group-item-action bg-light">Home</a>
+                <a href="{% url 'step1' %}" class="list-group-item list-group-item-action bg-light">step1 연구 목표 설정</a>
+                <a href="{% url 'step2' %}" class="list-group-item list-group-item-action bg-light">step2 데이터 획득</a>
+                <a href="{% url 'step3' %}" class="list-group-item list-group-item-action bg-light">step3 데이터 준비</a>
+                <a href="{% url 'step4' %}" class="list-group-item list-group-item-action bg-light">step4 데이터 탐색</a>
+                <a href="{% url 'step5' %}" class="list-group-item list-group-item-action bg-light">step5 데이터 모델링</a>
+                <a href="{% url 'step6' %}" class="list-group-item list-group-item-action bg-light">step6 발표</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn" id="menu-toggle"><span class="navbar-toggler-icon"></span></button>
-<!--
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn" id="menu-toggle"><span class="navbar-toggler-icon"></span></button>
+                <!--
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -72,33 +90,33 @@
           </ul>
         </div>
         -->
-      </nav>
+            </nav>
 
-      <div class="container-fluid">
-        <div class="mt-4"></div>
-        {% block contents %}
-        <h1 class="mt-4">Simple Sidebar</h1>
-        <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
-        {% endblock %}
-      </div>
+            <div class="container-fluid">
+                <div class="mt-4"></div>
+                {% block contents %}
+                <h1 class="mt-4">Simple Sidebar</h1>
+                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
+                {% endblock %}
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
     </div>
-    <!-- /#page-content-wrapper -->
+    <!-- /#wrapper -->
 
-  </div>
-  <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="/static/vendor/jquery/jquery.min.js"></script>
-  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 
 </body>
 

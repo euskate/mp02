@@ -1,24 +1,24 @@
 .floating-box {
-    border-radius:2px;
-    font-family: Tahoma, Arial, Serif;
-    font-size:6vm;
-    color:white;
+    border-radius: 5px;
+    font-family: Jua;
+    font-size: 6vm;
+    color: white;
     display: inline-block;
     width: 150px;
     height: 75px;
     margin: 10px;
-    padding:10px;
-    background:gray;
-    border: 1px solid silver; 
-  }
-   
-  .floating-box:hover {
-    color:gray; 
-    background:white;
+    padding: 10px;
+    background: gray;
+    border: 1px solid silver;
+}
+
+.floating-box:hover {
+    color: gray;
+    background: white;
     transition: 0.4s;
-  }
-   
-  .floating-step{
+}
+
+.floating-step {
     width: 0;
     height: 0;
     border-top: 5px solid transparent;
@@ -26,61 +26,60 @@
     border-left: 5px solid gray;
     display: inline-block;
     position: absolute;
-    margin-top:50px;
-    margin-left:-4px;
-  }
-   
-  .tbl {
+    margin-top: 50px;
+    margin-left: -4px;
+}
+
+.tbl {
     border-collapse: collapse;
     width: 100%;
-    font-family: Tahoma, Arial, Serif;
-    border-radius:2px;
-  }
-   
-  .tbl td, th {
+    font-family: Jua;
+    border-radius: 2px;
+}
+
+.tbl td,
+th {
     border: 1px solid silver;
-  }
-  
-  .tbl img {
-    display:inline-block;
+}
+
+.tbl img {
+    display: inline-block;
     text-align: center;
     max-width: 30%;
     height: auto;
-  }
-  
-  .tbl tr{
-    text-align:center;
-    font-size:6vm;
+}
+
+.tbl tr {
+    text-align: center;
+    font-size: 6vm;
     color: gray;
-    padding:10px;
-    background:white;
-    font-weight:normal;
-    border: 1px solid silver; 
+    padding: 10px;
+    background: white;
+    font-weight: normal;
+    border: 1px solid silver;
     height: 50px;
-  }
-   
-  .tbl tr:hover{
-   transition: ease-out 0.07s;
-   color: #383838 ;
-   background: #FFFFCC;
-  }
-   
-  .tbl th {
-    font-size:6vm;
-    color:white;
-    padding:10px;
-    background:gray;
-    font-weight:normal;
-    border: 1px solid silver; 
+}
+
+.tbl tr:hover {
+    transition: ease-out 0.07s;
+    color: #383838;
+    background: #FFFFCC;
+}
+
+.tbl th {
+    font-size: 6vm;
+    color: white;
+    padding: 10px;
+    background: gray;
+    font-weight: normal;
+    border: 1px solid silver;
     border-bottom: 3px solid silver;
     height: 50px;
-  }
-   
-  a.desc{
-    display:inline-block;
-    padding:3px 6px 3px 6px;
-    margin:4px;
-    font-size:1vm;
-  }
-   
-   
+}
+
+a.desc {
+    display: inline-block;
+    padding: 3px 6px 3px 6px;
+    margin: 4px;
+    font-size: 1vm;
+}
