@@ -14,10 +14,15 @@ def mergeAgriWheather(agriList):
 
     # 데이터 타입 변경
     df_wheather['날짜'] = pd.to_datetime(df_wheather.날짜)
+    # 추가 코드 : 날짜 형식 변경
+    try:
+        df_wheather['날짜'] = df_wheather['날짜'].dt.strftime('%y-%m-%d')
+    except:
+        pass
     df_wheather['현재기온'] = pd.to_numeric(df_wheather['현재기온'], errors='coerce')
     df_wheather['이슬점온도'] = pd.to_numeric(df_wheather['이슬점온도'], errors='coerce')
     df_wheather['체감온도'] = pd.to_numeric(df_wheather['체감온도'], errors='coerce')
-    df_wheather['강수량'] = pd.to_numeric(df_wheather['강수량'], errors='coerce')
+    # df_wheather['강수량'] = pd.to_numeric(df_wheather['강수량'], errors='coerce')
     df_wheather['습도'] = pd.to_numeric(df_wheather['습도'], errors='coerce')
     df_wheather['풍속'] = pd.to_numeric(df_wheather['풍속'], errors='coerce')
     df_wheather['해면기압'] = pd.to_numeric(df_wheather['해면기압'], errors='coerce')
@@ -39,7 +44,8 @@ def mergeAgriWheather(agriList):
 
 
 # 농산물 리스트
-agriList = ['moo', 'baechoo', 'apple', 'scallion', 'pear']
+# agriList = ['moo', 'baechoo', 'apple', 'scallion', 'pear']
+agriList = ['moo']
 
 if __name__ == "__main__":
     mergeAgriWheather(agriList=agriList)
