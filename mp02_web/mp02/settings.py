@@ -25,7 +25,8 @@ SECRET_KEY = 'i%#!j5#k0gdd2i3m*6h-!vb(*smso%r=zt1$ba^izon-+o9&(='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # 모든 사용자 접속
+# ALLOWED_HOSTS = [] # 개발자만 접속
 
 
 # Application definition
