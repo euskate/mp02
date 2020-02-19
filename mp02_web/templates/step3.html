@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step3</title>
-</head>
-<body>
-    <h2>step3</h2>
+{% extends "./main.html" %}
 
-</body>
-</html>
+<!-- 상단바 제목 -->
+{% block title %}
+{{ title }} - 2nd Mini Project
+{% endblock title %}
+
+<!-- 내용 -->
+{% block contents %}
+
+    <h2>{{ title }}</h2>
+
+{% endblock %}
