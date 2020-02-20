@@ -9,40 +9,30 @@
 <h2>{{ title }}</h2>
 
 <article>
-    <pre>
-## 2. 데이터 획득
-
-### '책'이라는 주제에 대하여
-
-- 통계청([http://kosis.kr/)](http://kosis.kr/)에서 데이터를 획득 
-  - [독서 (지난 1년간, 복수응답, 13세 이상 인구)](http://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1SSCL020R&vw_cd=MT_ZTITLE&list_id=D21B_2009&seqNo=&lang_mode=ko&language=kor&obj_var_id=&itm_id=&conn_path=MT_ZTITLE)
-  - [지역별 도서관 현황](http://kosis.kr/statHtml/statHtml.do?orgId=113&tblId=DT_113_STBL_1028309&conn_path=I2)
-  - 성인이 공공 도서관을 이용하지 않는 이유
-    http://kosis.kr/statHtml/statHtml.do?orgId=113&tblId=DT_113_STBL_1015728&vw_cd=MT_ZTITLE&list_id=113_11318_006&seqNo=&lang_mode=ko&language=kor&obj_var_id=&itm_id=&conn_path=MT_ZTITLE
-  - 콘텐츠산업별_매출액
-    http://kosis.kr/statHtml/statHtml.do?orgId=113&tblId=DT_113_STBL_1024763&vw_cd=MT_ZTITLE&list_id=113_11308_001&seqNo=&lang_mode=ko&language=kor&obj_var_id=&itm_id=&conn_path=MT_ZTITLE
-- e-나라 지표에서
-  - 독서 현황 데이터 지표에 대한 설명 및 정책 자료 링크
-    http://www.index.go.kr/potal/main/EachDtlPageDetail.do?idx_cd=2694
-  - 출판시장 현황
-    http://www.index.go.kr/potal/main/EachDtlPageDetail.do?idx_cd=1648
-- 한국출판문화산업진흥원(http://www.kpipa.or.kr/)에서
-  - 출판산업 실태조사(pdf)
-    [http://www.kpipa.or.kr/info/studyrepotList.do?board_id=51&article_id=96009&pageInfo.page=&search_cond=&search_text=%EC%B6%9C%ED%8C%90%EC%82%B0%EC%97%85+%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC](http://www.kpipa.or.kr/info/studyrepotList.do?board_id=51&article_id=96009&pageInfo.page=&search_cond=&search_text=출판산업+실태조사)
-
-### '농산물과 날씨'라는 주제에 대하여
-
-- 기상청에서 (2010~2019년)
-  - https://data.kma.go.kr/climate/StatisticsDivision/selectStatisticsDivision.do?pgmNo=158
-- KAMIS 농수산물유통정보 사이트 에서
-  - https://www.kamis.or.kr/customer/price/wholesale/period.do
-- 태풍 정보
-
-### 크롤링
-
-- 기상청
-- 농산물데이터
-</pre>
-
+  <h3>날씨 크롤링</h3>
+  <h4>크롤링의 이유</h4>
+    <ul>
+      <li>csv나 api로 주는 정보로는 최신의 정보를 얻을 수 없었다.</li>
+      <li>현재날씨( https://www.weather.go.kr/w/weather/now.do )에서 크롤링이 필요 </li>
+      <li>자바스크립트로 반응하기에 셀레니움으로 작업해야한다.</li>
+    </ul>
+  <h4>기본 기상청 홈페이지</h4>
+  <img src="/static/img/step2/기상청1.png" alt="기상청">
+    <ul>
+      <li>날짜 변경을 해야하는데 옵션보기를 눌러야 변경이 가능해진다.</li>
+    </ul>
+  <h4>옵션 누른 후 기상청 홈페이지</h4>
+  <img src="/static/img/step2/기상청2.png" alt="기상청">
+  <ul>
+    <li>이후 펼쳐지는 창에서 시간탭에 원하는 날짜를 입력해줄 수 있다.</li>
+  </ul>
+  <h4>시간을 입력하고 엔터키 입력</h4>
+  <img src="/static/img/step2/기상청3.png" alt="기상청">
+  <ul>
+    <li>해당 날짜로 바뀌게 된다.</li>
+  </ul>
+  <ul>
+    <li>원하는 날짜를 입력하고 반복시키면 필요한 기간만큼의 데이터를 얻을 수 있다.</li>
+  </ul>
 </article>
 {% endblock contents %}
