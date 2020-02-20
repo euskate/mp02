@@ -5,14 +5,216 @@
 {{ title }} - 2nd Mini Project
 {% endblock title %}
 
+{% block head %}
+<style>
+img {
+    width: 100%;
+    max-width: 800px
+}
+</style>
+{% endblock head %}
 <!-- 내용 -->
 {% block contents %}
+
 
     <h2>{{ title }}</h2>
 
     <article>
         
         
+<img src="/static/img/step5/img1.png" alt="책">
+
+책 참고
+
+<h3>회귀 분석</h3>
+
+<img src="/static/img/step5/img2.png" alt="heatmap"  style="width: 50%;">
+
+<h5>회귀분석이 가능한 조건</h5>
+    <ul>
+        <li>종속변수는 독립변수의 선형조합이어랴 한다.</li>
+        <li>오차항에 자기상관 관계가 없어야 한다.</li>
+        <li>오차는 평균이 0이면서 정규분포를 따라야 한다.</li>
+        <li>다중공선성이 존재하지 않거나 거의 없어야 한다.</li>
+        <li>오차항은 등분산성을 가져야 한다.</li>
+    </ul>
+
+<h5>다중공선성이 존재하지 않거나 거의 없어야 한다.</h5>
+    <ul>
+        <li>평년과 현재기온, 이슬점온도, 체감온도의 상관관계가 0.5이상으로 높은 수준으로 판단</li>
+        <li>그러나 3개의 변수가 서로0.8정도의 매우 강한 상관성을 띄고 있다. => 다중공선성이 보인다.</li>
+    </ul>
+    <p>SO, 변수를 제거해주어야 한다. => 후진 제거법</p>
+
+<h3>Feature selection</h3>
+ 
+<h6>Statsmodels api 활용</h6>
+<ul>
+    <li>import statsmodels.api as sm</li>
+</ul>
+
+<img src="/static/img/step5/img3.png" alt="math">
+
+<h6>AIC  (Akaike Information Criterion)</h6>
+<ul>
+    <li>아카이케 정보 기준</li>
+    <li>여러 통계 모델들의 성능을 서로 비교할 수 있게 해준다.</li>
+    <li>절대수치 상관X / 상대수치가 적을수록 good</li>
+</ul>
+
+<h6>수정 R제곱 (Adj. R-squared )</h6>
+<ul>
+    <li>모델의  설명력을 나타내주는 지표</li>
+    <li>일반 R-squared에 비해 변수가 늘어나도 일관적인 지표를 나타낸다.</li>
+    <li>0.7 이상 good</li>
+</ul>
+
+<h6>개별변수의 P값 ( P > |t|)</h6>
+<ul>
+    <li>정규성, 등분산성에 대한 검정</li>
+    <li>불필요한 변수를 선별하는 지표</li>
+    <li>0.05 이하 good</li>
+</ul>
+
+<h6>개별변수의 VIF값</h6>
+<ul>
+    <li>VIF (Variance Inflation Factors, 분산팽창요인)</li>
+    <li>다중 회귀 모델에서 독립 변수간 상관 관계가 있는지 측정하는 척도</li>
+    <li>5 이하 good ( 10까지는 허용범위 )</li>
+</ul>
+
+<h5>후진제거법 전</h5>
+
+<img src="/static/img/step5/img4.png" alt="static">
+
+<h5>후진제거법 후</h5>
+
+<img src="/static/img/step5/img5.png" alt="static">
+
+<h5>일반 선형회귀</h5>
+<p>clf_ = linear_model.LinearRegression(normalize=False)</p>
+<img src="/static/img/step5/img6.png" alt="graph">
+
+<h5>릿지, 라소 회귀</h5>
+<ul>
+    <li>튜닝 매개변수(λ)로 계수를 정규화하기 위해서 변수에 패널티를 적용한다.</li>
+    <li>λ=0, 패널티 영향 X -> 일반 회귀와 동일 </li>
+    <li>λ=∞로 갈수록 계수들은 0이 된다.</li>
+    <li>즉, λ 에 따라 가중치를 수정하면서 feature selection을 진행한다.</li>
+</ul>
+
+
+
+<h5>릿지</h5>
+<p>모든 예측변수를 중요도에 따라 가중치만 축소, 0값을 부여하지 않음=> 불필요한 변수가 제거되지 않는다.</p>
+
+<h5>라소</h5>
+<p>0까지 할당하기 때문에=> 불필요한 변수를 제거해준다.</p>
+
+<h4>Ridge 선형회귀</h4>
+<p>하이퍼 파라미터 alpha 값을 바꾸면서 </p>
+<p>TestAcc 기록을 갱신할 때마다 print</p>
+
+<pre><code>
+from sklearn.linear_model import Ridge
+
+alphas = [1e-4, 1e-3, 1e-2, 0.1, 0.5, 1.0, 5.0, 10.0]
+ridge_reg = Ridge(alpha=alph)
+
+-> 0.001에서 가장 잘 나오는 경향을 보임
+</code></pre>
+
+<pre>
+L2 Regularization
+가중치가 너무 크지 않은 방향으로 학습되게 됩니다.
+Weight decay를 조정한다.
+</pre>
+
+<img src="/static/img/step5/img7.png" alt="code">
+
+<img src="/static/img/step5/img8.png" alt="graph">
+
+<h4>Lasso 선형회귀</h4>
+
+<pre>
+하이퍼 파라미터 alpha 값을 바꾸면서 
+TestAcc 기록을 갱신할 때마다 print
+
+L2 Regularization
+가중치가 너무 크지 않은 방향으로 학습되게 됩니다
+</pre>
+
+<pre><code>
+from sklearn.linear_model import Lasso
+
+alphas = [1e-4, 1e-3, 1e-2, 0.1, 0.5, 1.0, 5.0, 10.0]
+lasso_reg = Lasso(alpha=alph)
+
+-> 0.001에서 가장 잘 나오는 경향을 보임
+</code></pre>
+
+<img src="/static/img/step5/img9.png" alt="graph">
+
+<h4>ElasticNet</h4>
+<pre>- Linear regression with combined L1 and L2 priors as regularizer.</pre>
+
+<pre>
+하이퍼 파라미터 l1_ratio 값을 바꾸면서 
+TestAcc 기록을 갱신할 때마다 print
+
+L2 Regularization  <> L2 Regularization
+둘의 비율을 조절한다.
+릿지와 라소를 섞은 느낌
+</pre>
+
+<pre><code>
+from sklearn.linear_model import ElasticNet
+
+l1Ratios = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+el__reg = ElasticNet(l1_ratio=l1Ratio , alpha=0.0001, normalize=False)
+
+-> 0.1에서 가장 잘 나오는 경향을 보임
+</code></pre>
+
+<img src="/static/img/step5/img10.png" alt="grpah">
+<pre>
+기본 선형회귀를 제외하고 다중공선성을 제거하지 않고 학습했다.
+
+변수를 선별하고 학습하는 것과 유사한 효과를 확인
+</pre>
+
+<h4>SVM Regression</h4>
+
+<pre>
+추가로 SVM Regression을 실행
+하이퍼 파라미터 C 값을 바꾸면서 
+TestAcc 기록을 갱신할 때마다 print
+</pre>
+
+<pre><code>
+from sklearn.svm import SVR
+
+Cs = [1.0, 10.0, 100.0, 500.0, 1000.0]
+SVR_reg = SVR(C=C_one)
+</code></pre>
+
+<img src="/static/img/step5/img11.png" alt="result">
+<pre>
+C가 증가할수록, trainAcc가 급증하는 반면, testAcc는 아주 천천히 증가
+
+So,  50부터 300까지 전체적인 추이를 확인해보자.
+</pre>
+
+<img src="/static/img/step5/img12.png" alt="grpah">
+
+<h4>참고 사항</h4>
+<ul>
+    <li>머신러닝과 통계</li>
+    <li>Danbi github : <a href="https://danbi-ncsoft.github.io/study/2018/05/04/study-regression_model_summary.html">https://danbi-ncsoft.github.io/study/2018/05/04/study-regression_model_summary.html</a></li>
+    <li>Sklearn document : <a href="https://scikit-learn.org/stable/modules/linear_model.html#linear-models">https://scikit-learn.org/stable/modules/linear_model.html#linear-models</a></li>
+    <li>Tistory : <a href="https://light-tree.tistory.com/125">https://light-tree.tistory.com/125</a></li>
+</ul>
+
     </article>    
 
 {% endblock %}

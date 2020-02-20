@@ -1,7 +1,7 @@
 .floating-box {
     border-radius: 5px;
     font-family: Jua;
-    font-size: 6vm;
+    font-size: 30vm;
     color: white;
     display: inline-block;
     width: 150px;
@@ -51,7 +51,7 @@ th {
 
 .tbl tr {
     text-align: center;
-    font-size: 6vm;
+    font-size: 30vm;
     color: gray;
     padding: 10px;
     background: white;
