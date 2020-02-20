@@ -11,7 +11,9 @@
 <article>
 
     <h3 class="mt-4">데이터 정제</h3>
-    <figure><figcaption><h4>data.py</h4></figcaption>
+    <h4>농산물 데이터 크롤링 및 Tidy data화</h4>
+    <li>농산물유통정보 KAMIS : <a href="https://www.kamis.or.kr/customer/price/retail/period.do">https://www.kamis.or.kr/</a></li>
+    <figure><figcaption><h4>data.py - 전체 함수 실행 모듈</h4></figcaption>
       <pre><code class="python" contenteditable spellcheck="false">
 from crawl_def import crawl_agri as step1, to_dataframe as step2
 from merge_agri_wheather import mergeAgriWheather as step3
@@ -61,7 +63,7 @@ step3(agriList=agriList)
 step4(resultfilename=resultfilename)
     </code></pre></figure>
 
-    <figure><figcaption><h4>step1 크롤링 함수</h4></figcaption>
+    <figure><figcaption><h4>step1 : 농산물 크롤링 함수</h4></figcaption>
       <pre><code class="python" contenteditable spellcheck="false">
 def crawl_agri(name, day, category, item, kind):
     """
